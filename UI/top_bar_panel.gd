@@ -8,7 +8,9 @@ extends PanelContainer
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	pass # Replace with function body.
+
+	_on_refresh_resources() # 初始化资源数量
+	GameManager.refresh_resources.connect(_on_refresh_resources)
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -16,10 +18,12 @@ func _process(delta: float) -> void:
 	pass
 
 func _physics_process(delta: float) -> void:
-	refresh_resources_num()
-	
-func refresh_resources_num() -> void:
-	'''刷新资源数量'''
+	pass
+
+
+
+func _on_refresh_resources() -> void:
+	'''接收信号刷新资源数量'''
 	
 	var resources = GameManager.get_resources()
 	var food_num = resources.get('food')

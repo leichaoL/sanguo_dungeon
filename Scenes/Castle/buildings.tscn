@@ -1,9 +1,9 @@
 [gd_scene load_steps=7 format=3 uid="uid://bt7q2laroj0s3"]
 
-[ext_resource type="Texture2D" uid="uid://jx2pagl1in8q" path="res://icon.svg" id="1_0f24g"]
 [ext_resource type="Script" path="res://Scenes/Castle/buildings.gd" id="1_nprvt"]
 [ext_resource type="Theme" uid="uid://didbnwpcd6xrv" path="res://UI/button.tres" id="2_8p2kv"]
 [ext_resource type="PackedScene" uid="uid://bg30j7pl1ac6m" path="res://UI/top_bar_panel.tscn" id="2_bfoin"]
+[ext_resource type="PackedScene" uid="uid://bldyil1xkumy3" path="res://Scenes/Castle/building_button.tscn" id="3_2tr5g"]
 [ext_resource type="PackedScene" uid="uid://t3bvtqqjqp2s" path="res://UI/upgrade_window.tscn" id="5_fyfbf"]
 
 [sub_resource type="Theme" id="Theme_3b0me"]
@@ -33,153 +33,36 @@ theme_override_constants/margin_top = 10
 layout_mode = 2
 theme_override_constants/separation = 100
 
-[node name="FarmContanier" type="VBoxContainer" parent="Production/Production"]
+[node name="FarmContanier" parent="Production/Production" instance=ExtResource("3_2tr5g")]
 layout_mode = 2
-tooltip_text = "生产食物，生产速度：100/s"
-theme_override_constants/separation = 15
 
-[node name="Farm" type="TextureButton" parent="Production/Production/FarmContanier"]
+[node name="WoodContanier" parent="Production/Production" instance=ExtResource("3_2tr5g")]
 layout_mode = 2
-texture_normal = ExtResource("1_0f24g")
 
-[node name="HBoxContainer" type="HBoxContainer" parent="Production/Production/FarmContanier"]
+[node name="StoneContanier" parent="Production/Production" instance=ExtResource("3_2tr5g")]
 layout_mode = 2
-theme_override_constants/separation = 10
 
-[node name="Label" type="Label" parent="Production/Production/FarmContanier/HBoxContainer"]
+[node name="GoldContanier" parent="Production/Production" instance=ExtResource("3_2tr5g")]
 layout_mode = 2
-theme_override_font_sizes/font_size = 24
-text = "农场"
-horizontal_alignment = 1
-vertical_alignment = 1
 
-[node name="LvlLabel" type="Label" parent="Production/Production/FarmContanier/HBoxContainer"]
-layout_mode = 2
-theme_override_font_sizes/font_size = 24
-text = "等级：1"
-horizontal_alignment = 1
-vertical_alignment = 1
-
-[node name="WoodContanier" type="VBoxContainer" parent="Production/Production"]
-layout_mode = 2
-tooltip_text = "生产食物，生产速度：100/s"
-theme_override_constants/separation = 15
-
-[node name="Wood" type="TextureButton" parent="Production/Production/WoodContanier"]
-layout_mode = 2
-texture_normal = ExtResource("1_0f24g")
-
-[node name="HBoxContainer" type="HBoxContainer" parent="Production/Production/WoodContanier"]
-layout_mode = 2
-theme_override_constants/separation = 10
-
-[node name="Label" type="Label" parent="Production/Production/WoodContanier/HBoxContainer"]
-layout_mode = 2
-theme_override_font_sizes/font_size = 24
-text = "伐木场"
-horizontal_alignment = 1
-vertical_alignment = 1
-
-[node name="LvlLabel" type="Label" parent="Production/Production/WoodContanier/HBoxContainer"]
-layout_mode = 2
-theme_override_font_sizes/font_size = 24
-text = "等级：1"
-horizontal_alignment = 1
-vertical_alignment = 1
-
-[node name="StoneContanier" type="VBoxContainer" parent="Production/Production"]
-layout_mode = 2
-tooltip_text = "生产食物，生产速度：100/s"
-theme_override_constants/separation = 15
-
-[node name="Stone" type="TextureButton" parent="Production/Production/StoneContanier"]
-layout_mode = 2
-texture_normal = ExtResource("1_0f24g")
-
-[node name="HBoxContainer" type="HBoxContainer" parent="Production/Production/StoneContanier"]
-layout_mode = 2
-theme_override_constants/separation = 10
-
-[node name="Label" type="Label" parent="Production/Production/StoneContanier/HBoxContainer"]
-layout_mode = 2
-theme_override_font_sizes/font_size = 24
-text = "采石场"
-horizontal_alignment = 1
-vertical_alignment = 1
-
-[node name="LvlLabel" type="Label" parent="Production/Production/StoneContanier/HBoxContainer"]
-layout_mode = 2
-theme_override_font_sizes/font_size = 24
-text = "等级：1"
-horizontal_alignment = 1
-vertical_alignment = 1
-
-[node name="GoldContanier" type="VBoxContainer" parent="Production/Production"]
-layout_mode = 2
-tooltip_text = "生产食物，生产速度：100/s"
-theme_override_constants/separation = 15
-
-[node name="Gold" type="TextureButton" parent="Production/Production/GoldContanier"]
-layout_mode = 2
-texture_normal = ExtResource("1_0f24g")
-
-[node name="HBoxContainer" type="HBoxContainer" parent="Production/Production/GoldContanier"]
-layout_mode = 2
-theme_override_constants/separation = 10
-
-[node name="Label" type="Label" parent="Production/Production/GoldContanier/HBoxContainer"]
-layout_mode = 2
-theme_override_font_sizes/font_size = 24
-text = "金矿"
-horizontal_alignment = 1
-vertical_alignment = 1
-
-[node name="LvlLabel" type="Label" parent="Production/Production/GoldContanier/HBoxContainer"]
-layout_mode = 2
-theme_override_font_sizes/font_size = 24
-text = "等级：1"
-horizontal_alignment = 1
-vertical_alignment = 1
-
-[node name="Military" type="MarginContainer" parent="."]
+[node name="MillitaryContainer" type="MarginContainer" parent="."]
 layout_mode = 2
 offset_left = 60.0
-offset_top = 379.0
+offset_top = 376.0
 offset_right = 214.0
-offset_bottom = 566.0
+offset_bottom = 563.0
 theme_override_constants/margin_left = 10
 theme_override_constants/margin_top = 10
 
-[node name="MillitaryHbox" type="HBoxContainer" parent="Military"]
+[node name="Millitary" type="HBoxContainer" parent="MillitaryContainer"]
 layout_mode = 2
 theme_override_constants/separation = 100
 
-[node name="VboxContanier" type="VBoxContainer" parent="Military/MillitaryHbox"]
+[node name="Millitary" parent="MillitaryContainer/Millitary" instance=ExtResource("3_2tr5g")]
 layout_mode = 2
-tooltip_text = "生产食物，生产速度：100/s"
-theme_override_constants/separation = 15
 
-[node name="MillitaryTexture" type="TextureButton" parent="Military/MillitaryHbox/VboxContanier"]
-layout_mode = 2
-texture_normal = ExtResource("1_0f24g")
-
-[node name="HBoxContainer" type="HBoxContainer" parent="Military/MillitaryHbox/VboxContanier"]
-layout_mode = 2
-theme_override_constants/separation = 10
-
-[node name="Label" type="Label" parent="Military/MillitaryHbox/VboxContanier/HBoxContainer"]
-layout_mode = 2
-theme_override_font_sizes/font_size = 24
+[node name="Label" parent="MillitaryContainer/Millitary/Millitary/HBoxContainer" index="0"]
 text = "兵营"
-horizontal_alignment = 1
-vertical_alignment = 1
-
-[node name="LvlLabel" type="Label" parent="Military/MillitaryHbox/VboxContanier/HBoxContainer"]
-layout_mode = 2
-theme_override_font_sizes/font_size = 24
-text = "等级：1"
-horizontal_alignment = 1
-vertical_alignment = 1
 
 [node name="BackToMain" type="Button" parent="."]
 layout_mode = 1
@@ -249,8 +132,14 @@ layout_mode = 1
 [node name="AcceptDialog" type="AcceptDialog" parent="."]
 initial_position = 2
 
-[connection signal="pressed" from="Production/Production/FarmContanier/Farm" to="." method="_on_farm_pressed"]
-[connection signal="pressed" from="Production/Production/WoodContanier/Wood" to="." method="_on_wood_pressed"]
-[connection signal="pressed" from="Production/Production/StoneContanier/Stone" to="." method="_on_stone_pressed"]
-[connection signal="pressed" from="Production/Production/GoldContanier/Gold" to="." method="_on_gold_pressed"]
+[connection signal="pressed" from="Production/Production/FarmContanier/BuildingName" to="." method="_on_farm_pressed"]
+[connection signal="pressed" from="Production/Production/WoodContanier/BuildingName" to="." method="_on_wood_pressed"]
+[connection signal="pressed" from="Production/Production/StoneContanier/BuildingName" to="." method="_on_stone_pressed"]
+[connection signal="pressed" from="Production/Production/GoldContanier/BuildingName" to="." method="_on_gold_pressed"]
 [connection signal="pressed" from="BackToMain" to="." method="_on_back_to_main_pressed"]
+
+[editable path="Production/Production/FarmContanier"]
+[editable path="Production/Production/WoodContanier"]
+[editable path="Production/Production/StoneContanier"]
+[editable path="Production/Production/GoldContanier"]
+[editable path="MillitaryContainer/Millitary/Millitary"]

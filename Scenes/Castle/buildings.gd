@@ -1,19 +1,24 @@
 extends Control
-@onready var confirmation_dialog: ConfirmationDialog = $ConfirmationDialog
+
+
 @onready var upgrade_window: Control = $UpgradeWindow
 
-# 新增等级标签引用
-@onready var farm_lvl_label: Label = get_node("Production/Production/FarmContanier/HBoxContainer/LvlLabel")
-@onready var wood_lvl_label: Label = get_node("Production/Production/WoodContanier/HBoxContainer/LvlLabel")
-@onready var stone_lvl_label: Label = get_node("Production/Production/StoneContanier/HBoxContainer/LvlLabel")
-@onready var gold_lvl_label: Label = get_node("Production/Production/GoldContanier/HBoxContainer/LvlLabel")
+
+# 添加建筑名称字典
+var building_names = {
+	"farm": "农场",
+	"wood": "伐木场",
+	"stone": "采石场",
+	"gold": "金矿"
+}
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	# 初始化时刷新所有等级显示
-	refresh_all_levels()
+	refresh_building()
+	# 初始化时刷新所有等级显示 
+	#refresh_all_levels()
 	# 连接升级信号
-	GameManager.building_upgraded.connect(_on_building_upgraded)
+	GameManager.building_upgraded.connect(refresh_building)
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
@@ -49,21 +54,26 @@ func _on_gold_pressed() -> void:
 	upgrade_window.refresh_needs("gold")
 	upgrade_window.visible = true
 
-func refresh_all_levels() -> void:
-	
-	farm_lvl_label.text = "等级：%d" % GameManager.get_building_level("farm")
-	wood_lvl_label.text = "等级：%d" % GameManager.get_building_level("wood")
-	stone_lvl_label.text = "等级：%d" % GameManager.get_building_level("stone")
-	gold_lvl_label.text = "等级：%d" % GameManager.get_building_level("gold")
 
-func _on_building_upgraded(building_name: String) -> void:
-	# 当收到升级信号时刷新对应建筑等级
-	match building_name:
-		"farm":
-			farm_lvl_label.text = "等级：%d" % GameManager.get_building_level("farm")
-		"wood":
-			wood_lvl_label.text = "等级：%d" % GameManager.get_building_level("wood")
-		"stone":
-			stone_lvl_label.text = "等级：%d" % GameManager.get_building_level("stone")
-		"gold":
-			gold_lvl_label.text = "等级：%d" % GameManager.get_building_level("gold")
+func refresh_building():
+	'''刷新建筑标签'''
+	
+	for building_type in building_names:
+		var label: Label = get_node("Production/Production/%sContanier/HBoxContainer/Label" % building_type.capitalize())
+		var lvl_label: Label = get_node("Production/Production/%sContanier/HBoxContainer/LvlLabel" % building_type.capitalize())
+		var shadow: TextureButton = get_node("Production/Production/%sContanier/BuildingName/Shadow" % building_type.capitalize())
+		
+		var lvl = GameManager.get_building_level(building_type)
+		
+		label.text = building_names[building_type]
+		lvl_label.text = "等级: %d" % lvl if lvl > 0 else "未解锁"
+		shadow.visible = (lvl == 0) 
+	
+	var barracks_label: Label = get_node("MillitaryContainer/Millitary/Millitary/HBoxContainer/Label")
+	var barracks_lvl: Label = get_node("MillitaryContainer/Millitary/Millitary/HBoxContainer/LvlLabel")
+	var barracks_shadow: TextureButton = get_node("MillitaryContainer/Millitary/Millitary/BuildingName/Shadow")
+	
+	var lvl = 0
+	barracks_label.text = '兵营'
+	barracks_lvl.text = "等级: %d" % lvl if lvl > 0 else "未解锁"
+	barracks_shadow.visible = (lvl == 0)

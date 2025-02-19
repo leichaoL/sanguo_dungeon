@@ -1,7 +1,12 @@
 extends Node  
 
 # 在类作用域顶部声明信号
-signal building_upgraded(building_name: String)
+signal building_upgraded
+signal refresh_resources
+
+
+var refresh_time := 3.0
+@onready var production_timer = Timer.new()
 
 # 资源系统
 var resources: Dictionary = {
@@ -51,7 +56,7 @@ var buildings: Dictionary = {
 		"unlocked": true
 	},
 	"gold": {
-		"level": 1,
+		"level": 0,
 		"base_cost": {"wood": 50, "stone": 30},
 		"upgrade_cost": {"wood": 50, "stone": 30},
 		"base_production": {"gold": 7},
@@ -67,8 +72,7 @@ var reserve_troops: int = 0
 var recruit_cost: int = 100
 var recruit_amount: int = 500
 
-var refresh_time := 3.0
-@onready var production_timer = Timer.new()
+
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -92,7 +96,8 @@ func _on_production_timer_timeout():
 	resources['wood'] += get_build_production_speed('wood') * refresh_time
 	resources['stone'] += get_build_production_speed('stone') * refresh_time
 	resources['gold'] += get_build_production_speed('gold') * refresh_time
-
+	
+	refresh_resources.emit()
 
 func get_build_production_speed(building_name: String, level: int = -1) -> int:
 	var building = buildings.get(building_name)
@@ -174,4 +179,4 @@ func upgrade_building(building_name: String) -> void:
 	building["production"] = new_production
 
 	# 发送信号
-	building_upgraded.emit(building_name)
+	building_upgraded.emit()
