@@ -1,0 +1,94 @@
+[gd_scene load_steps=5 format=3 uid="uid://ye3vqsfqolht"]
+
+[ext_resource type="Script" path="res://UI/ui.gd" id="1_kacyp"]
+[ext_resource type="Theme" uid="uid://didbnwpcd6xrv" path="res://UI/button.tres" id="1_lei8w"]
+[ext_resource type="PackedScene" uid="uid://bt7q2laroj0s3" path="res://Scenes/Castle/buildings.tscn" id="2_tavwq"]
+[ext_resource type="PackedScene" uid="uid://bg30j7pl1ac6m" path="res://UI/top_bar_panel.tscn" id="3_sr6tc"]
+
+[node name="UI" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_kacyp")
+buildings = ExtResource("2_tavwq")
+
+[node name="TopBarPanel" parent="." instance=ExtResource("3_sr6tc")]
+layout_mode = 1
+
+[node name="BottomMenu" type="HBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -79.0
+offset_bottom = -29.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_constants/separation = 50
+alignment = 1
+
+[node name="Buildings" type="Button" parent="BottomMenu"]
+custom_minimum_size = Vector2(120, 50)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+focus_mode = 1
+mouse_default_cursor_shape = 2
+theme = ExtResource("1_lei8w")
+text = "建筑系统"
+
+[node name="FindHeroes" type="Button" parent="BottomMenu"]
+custom_minimum_size = Vector2(120, 50)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+focus_mode = 1
+mouse_default_cursor_shape = 2
+theme = ExtResource("1_lei8w")
+text = "英雄探索"
+
+[node name="TeamManagement" type="Button" parent="BottomMenu"]
+custom_minimum_size = Vector2(120, 50)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+focus_mode = 1
+mouse_default_cursor_shape = 2
+theme = ExtResource("1_lei8w")
+text = "编队管理"
+
+[node name="Battle" type="Button" parent="BottomMenu"]
+custom_minimum_size = Vector2(120, 50)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+focus_mode = 1
+mouse_default_cursor_shape = 2
+theme = ExtResource("1_lei8w")
+text = "开始战斗"
+
+[node name="HeroesInfo" type="Button" parent="BottomMenu"]
+custom_minimum_size = Vector2(120, 50)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+focus_mode = 1
+mouse_default_cursor_shape = 2
+theme = ExtResource("1_lei8w")
+text = "英雄详情"
+
+[node name="Backpack" type="Button" parent="BottomMenu"]
+custom_minimum_size = Vector2(120, 50)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+focus_mode = 1
+mouse_default_cursor_shape = 2
+theme = ExtResource("1_lei8w")
+text = "背包"
+
+[connection signal="pressed" from="BottomMenu/Buildings" to="." method="_on_buildings_pressed"]

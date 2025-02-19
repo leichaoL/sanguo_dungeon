@@ -1,0 +1,238 @@
+[gd_scene load_steps=7 format=3 uid="uid://t3bvtqqjqp2s"]
+
+[ext_resource type="Texture2D" uid="uid://bgegs1oorsk24" path="res://assets/Objects/food.atlastex" id="1_1fkhw"]
+[ext_resource type="Script" path="res://UI/upgrade_window.gd" id="1_hddq2"]
+[ext_resource type="Texture2D" uid="uid://ibh7l22keg3p" path="res://assets/Objects/wood.atlastex" id="2_k8mor"]
+[ext_resource type="Texture2D" uid="uid://dkb4q6nnqgyfg" path="res://assets/Objects/stone.atlastex" id="3_fhben"]
+[ext_resource type="Texture2D" uid="uid://pt8xjfy7mv0n" path="res://assets/Objects/gold.atlastex" id="4_q757d"]
+[ext_resource type="Theme" uid="uid://didbnwpcd6xrv" path="res://UI/button.tres" id="5_vbl54"]
+
+[node name="UpgradeWindow" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_hddq2")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+layout_mode = 0
+offset_right = 1920.0
+offset_bottom = 1080.0
+color = Color(0, 0, 0, 0.34902)
+
+[node name="PanelContainer" type="PanelContainer" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -510.0
+offset_top = -240.0
+offset_right = 490.0
+offset_bottom = 360.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="PanelContainer"]
+layout_mode = 2
+theme_override_constants/margin_left = 20
+theme_override_constants/margin_top = 20
+theme_override_constants/margin_right = 20
+theme_override_constants/margin_bottom = 20
+
+[node name="VBoxContainer" type="VBoxContainer" parent="PanelContainer/MarginContainer"]
+layout_mode = 2
+
+[node name="Title" type="MarginContainer" parent="PanelContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="PanelContainer/MarginContainer/VBoxContainer/Title"]
+layout_mode = 2
+
+[node name="Space" type="Control" parent="PanelContainer/MarginContainer/VBoxContainer/Title/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Label" type="Label" parent="PanelContainer/MarginContainer/VBoxContainer/Title/HBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 30
+text = "升级"
+
+[node name="Building" type="Label" parent="PanelContainer/MarginContainer/VBoxContainer/Title/HBoxContainer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.862745, 0.431373, 0, 1)
+theme_override_font_sizes/font_size = 30
+text = "农场"
+
+[node name="Label2" type="Label" parent="PanelContainer/MarginContainer/VBoxContainer/Title/HBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 30
+text = "到："
+
+[node name="NextLevel" type="Label" parent="PanelContainer/MarginContainer/VBoxContainer/Title/HBoxContainer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.862745, 0.431373, 0, 1)
+theme_override_font_sizes/font_size = 30
+text = "Lv. 2"
+
+[node name="Space2" type="Control" parent="PanelContainer/MarginContainer/VBoxContainer/Title/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Compare" type="MarginContainer" parent="PanelContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="PanelContainer/MarginContainer/VBoxContainer/Compare"]
+layout_mode = 2
+theme_override_constants/margin_left = 50
+theme_override_constants/margin_top = 30
+
+[node name="HBoxContainer" type="HBoxContainer" parent="PanelContainer/MarginContainer/VBoxContainer/Compare/MarginContainer"]
+layout_mode = 2
+theme_override_constants/separation = 200
+
+[node name="VBoxContainer" type="VBoxContainer" parent="PanelContainer/MarginContainer/VBoxContainer/Compare/MarginContainer/HBoxContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="PanelContainer/MarginContainer/VBoxContainer/Compare/MarginContainer/HBoxContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 30
+text = "当前产出："
+
+[node name="CurProduction" type="HBoxContainer" parent="PanelContainer/MarginContainer/VBoxContainer/Compare/MarginContainer/HBoxContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="ResourceTexture" type="TextureRect" parent="PanelContainer/MarginContainer/VBoxContainer/Compare/MarginContainer/HBoxContainer/VBoxContainer/CurProduction"]
+layout_mode = 2
+texture = ExtResource("1_1fkhw")
+expand_mode = 2
+
+[node name="Control" type="Control" parent="PanelContainer/MarginContainer/VBoxContainer/Compare/MarginContainer/HBoxContainer/VBoxContainer/CurProduction"]
+layout_mode = 2
+
+[node name="CurProductionLabel" type="Label" parent="PanelContainer/MarginContainer/VBoxContainer/Compare/MarginContainer/HBoxContainer/VBoxContainer/CurProduction"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 30
+text = "10/s"
+
+[node name="Space" type="Control" parent="PanelContainer/MarginContainer/VBoxContainer/Compare/MarginContainer/HBoxContainer/VBoxContainer"]
+custom_minimum_size = Vector2(0, 50)
+layout_mode = 2
+
+[node name="Label2" type="Label" parent="PanelContainer/MarginContainer/VBoxContainer/Compare/MarginContainer/HBoxContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 30
+text = "升级需要："
+
+[node name="FoodNeeds" type="HBoxContainer" parent="PanelContainer/MarginContainer/VBoxContainer/Compare/MarginContainer/HBoxContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="ResourceTexture" type="TextureRect" parent="PanelContainer/MarginContainer/VBoxContainer/Compare/MarginContainer/HBoxContainer/VBoxContainer/FoodNeeds"]
+layout_mode = 2
+texture = ExtResource("1_1fkhw")
+expand_mode = 2
+
+[node name="Control" type="Control" parent="PanelContainer/MarginContainer/VBoxContainer/Compare/MarginContainer/HBoxContainer/VBoxContainer/FoodNeeds"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="PanelContainer/MarginContainer/VBoxContainer/Compare/MarginContainer/HBoxContainer/VBoxContainer/FoodNeeds"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 30
+text = "40"
+
+[node name="WoodNeeds" type="HBoxContainer" parent="PanelContainer/MarginContainer/VBoxContainer/Compare/MarginContainer/HBoxContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="ResourceTexture" type="TextureRect" parent="PanelContainer/MarginContainer/VBoxContainer/Compare/MarginContainer/HBoxContainer/VBoxContainer/WoodNeeds"]
+layout_mode = 2
+texture = ExtResource("2_k8mor")
+expand_mode = 2
+
+[node name="Control" type="Control" parent="PanelContainer/MarginContainer/VBoxContainer/Compare/MarginContainer/HBoxContainer/VBoxContainer/WoodNeeds"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="PanelContainer/MarginContainer/VBoxContainer/Compare/MarginContainer/HBoxContainer/VBoxContainer/WoodNeeds"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 30
+text = "20
+"
+
+[node name="StoneNeeds" type="HBoxContainer" parent="PanelContainer/MarginContainer/VBoxContainer/Compare/MarginContainer/HBoxContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="ResourceTexture" type="TextureRect" parent="PanelContainer/MarginContainer/VBoxContainer/Compare/MarginContainer/HBoxContainer/VBoxContainer/StoneNeeds"]
+layout_mode = 2
+texture = ExtResource("3_fhben")
+expand_mode = 2
+
+[node name="Control" type="Control" parent="PanelContainer/MarginContainer/VBoxContainer/Compare/MarginContainer/HBoxContainer/VBoxContainer/StoneNeeds"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="PanelContainer/MarginContainer/VBoxContainer/Compare/MarginContainer/HBoxContainer/VBoxContainer/StoneNeeds"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 30
+text = "60"
+
+[node name="GoldNeeds" type="HBoxContainer" parent="PanelContainer/MarginContainer/VBoxContainer/Compare/MarginContainer/HBoxContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="ResourceTexture" type="TextureRect" parent="PanelContainer/MarginContainer/VBoxContainer/Compare/MarginContainer/HBoxContainer/VBoxContainer/GoldNeeds"]
+layout_mode = 2
+texture = ExtResource("4_q757d")
+expand_mode = 2
+
+[node name="Control" type="Control" parent="PanelContainer/MarginContainer/VBoxContainer/Compare/MarginContainer/HBoxContainer/VBoxContainer/GoldNeeds"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="PanelContainer/MarginContainer/VBoxContainer/Compare/MarginContainer/HBoxContainer/VBoxContainer/GoldNeeds"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 30
+text = "60"
+
+[node name="UpgradeProduction" type="VBoxContainer" parent="PanelContainer/MarginContainer/VBoxContainer/Compare/MarginContainer/HBoxContainer"]
+layout_mode = 2
+
+[node name="Label2" type="Label" parent="PanelContainer/MarginContainer/VBoxContainer/Compare/MarginContainer/HBoxContainer/UpgradeProduction"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0.796078, 0, 1)
+theme_override_font_sizes/font_size = 30
+text = "升级后产出："
+
+[node name="UpgradeProductionLabel" type="Label" parent="PanelContainer/MarginContainer/VBoxContainer/Compare/MarginContainer/HBoxContainer/UpgradeProduction"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0.796078, 0, 1)
+theme_override_font_sizes/font_size = 30
+text = "10/s → 20/s"
+
+[node name="HBoxContainer" type="HBoxContainer" parent="PanelContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 10
+alignment = 1
+
+[node name="Control" type="Control" parent="PanelContainer/MarginContainer/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Confirm" type="Button" parent="PanelContainer/MarginContainer/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme = ExtResource("5_vbl54")
+theme_override_font_sizes/font_size = 30
+text = "确认升级"
+
+[node name="Cancle" type="Button" parent="PanelContainer/MarginContainer/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme = ExtResource("5_vbl54")
+theme_override_font_sizes/font_size = 30
+text = "取消"
+
+[node name="Control2" type="Control" parent="PanelContainer/MarginContainer/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[connection signal="pressed" from="PanelContainer/MarginContainer/VBoxContainer/HBoxContainer/Confirm" to="." method="_on_confirm_pressed"]
+[connection signal="pressed" from="PanelContainer/MarginContainer/VBoxContainer/HBoxContainer/Cancle" to="." method="_on_cancle_pressed"]

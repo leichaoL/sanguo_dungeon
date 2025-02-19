@@ -1,0 +1,76 @@
+[gd_scene load_steps=7 format=3 uid="uid://bg30j7pl1ac6m"]
+
+[ext_resource type="Script" path="res://UI/top_bar_panel.gd" id="1_0na5c"]
+[ext_resource type="Texture2D" uid="uid://bgegs1oorsk24" path="res://assets/Objects/food.atlastex" id="1_re6mt"]
+[ext_resource type="Texture2D" uid="uid://ibh7l22keg3p" path="res://assets/Objects/wood.atlastex" id="2_iuhew"]
+[ext_resource type="Texture2D" uid="uid://dkb4q6nnqgyfg" path="res://assets/Objects/stone.atlastex" id="3_eefxa"]
+[ext_resource type="Texture2D" uid="uid://pt8xjfy7mv0n" path="res://assets/Objects/gold.atlastex" id="4_06m0t"]
+
+[sub_resource type="Theme" id="Theme_4v05n"]
+
+[node name="TopBarPanel" type="PanelContainer"]
+anchors_preset = 10
+anchor_right = 1.0
+offset_bottom = 45.0
+grow_horizontal = 2
+script = ExtResource("1_0na5c")
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 2
+theme_override_constants/margin_left = 30
+
+[node name="TopBar" type="HBoxContainer" parent="MarginContainer"]
+layout_mode = 2
+theme = SubResource("Theme_4v05n")
+theme_override_constants/separation = 20
+
+[node name="Space" type="Control" parent="MarginContainer/TopBar"]
+visible = false
+layout_mode = 2
+
+[node name="Food" type="TextureRect" parent="MarginContainer/TopBar"]
+layout_mode = 2
+tooltip_text = "食物"
+texture = ExtResource("1_re6mt")
+expand_mode = 2
+
+[node name="FoodLabel" type="Label" parent="MarginContainer/TopBar"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 32
+text = "100"
+
+[node name="Wood" type="TextureRect" parent="MarginContainer/TopBar"]
+layout_mode = 2
+size_flags_horizontal = 0
+tooltip_text = "木材"
+texture = ExtResource("2_iuhew")
+expand_mode = 2
+
+[node name="WoodLabel" type="Label" parent="MarginContainer/TopBar"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 32
+text = "100"
+
+[node name="Stone" type="TextureRect" parent="MarginContainer/TopBar"]
+layout_mode = 2
+size_flags_horizontal = 0
+tooltip_text = "石头"
+texture = ExtResource("3_eefxa")
+expand_mode = 2
+
+[node name="StoneLabel" type="Label" parent="MarginContainer/TopBar"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 32
+text = "100"
+
+[node name="Gold" type="TextureRect" parent="MarginContainer/TopBar"]
+layout_mode = 2
+size_flags_horizontal = 0
+tooltip_text = "金币"
+texture = ExtResource("4_06m0t")
+expand_mode = 2
+
+[node name="GoldLabel" type="Label" parent="MarginContainer/TopBar"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 32
+text = "100"
