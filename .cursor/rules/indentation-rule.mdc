@@ -1,0 +1,9 @@
+---
+description: always use tab for indentation
+globs: 
+---
+
+# Your rule content
+
+- You can @ files here
+- You can use markdown but dont have to

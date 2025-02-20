@@ -27,6 +27,15 @@ window/size/viewport_height=1080
 window/stretch/mode="canvas_items"
 window/stretch/aspect="expand"
 
+[file_customization]
+
+folder_colors={
+"res://Core/": "orange",
+"res://Data/": "yellow",
+"res://Game/": "green",
+"res://assets/": "red"
+}
+
 [input]
 
 move_up={
