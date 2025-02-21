@@ -1,12 +1,23 @@
-[gd_scene load_steps=7 format=3 uid="uid://bt7q2laroj0s3"]
+[gd_scene load_steps=17 format=3 uid="uid://bt7q2laroj0s3"]
 
 [ext_resource type="Script" path="res://Scenes/Castle/buildings.gd" id="1_nprvt"]
 [ext_resource type="Theme" uid="uid://didbnwpcd6xrv" path="res://UI/button.tres" id="2_8p2kv"]
 [ext_resource type="PackedScene" uid="uid://bg30j7pl1ac6m" path="res://UI/top_bar_panel.tscn" id="2_bfoin"]
 [ext_resource type="PackedScene" uid="uid://bldyil1xkumy3" path="res://Scenes/Castle/building_button.tscn" id="3_2tr5g"]
+[ext_resource type="Texture2D" uid="uid://bc58o6hmu22y6" path="res://assets/Objects/building_icon/farm_gray.png" id="5_0m3s3"]
+[ext_resource type="Texture2D" uid="uid://dgbhmm0vdyqd7" path="res://assets/Objects/building_icon/wood.png" id="5_8jene"]
 [ext_resource type="PackedScene" uid="uid://t3bvtqqjqp2s" path="res://UI/upgrade_window.tscn" id="5_fyfbf"]
+[ext_resource type="Theme" uid="uid://d12ee145cirhy" path="res://UI/accep_dialog_theme.tres" id="6_tgmy7"]
+[ext_resource type="Texture2D" uid="uid://bamtlerbtt6ye" path="res://assets/Objects/building_icon/wood_gary.png" id="6_uqoh7"]
+[ext_resource type="Texture2D" uid="uid://bgr3y0q8vu43w" path="res://assets/Objects/building_icon/stone.png" id="7_av8fo"]
+[ext_resource type="Texture2D" uid="uid://b3dgva51ad58h" path="res://assets/Objects/building_icon/stone_gary.png" id="8_fw6gp"]
+[ext_resource type="Texture2D" uid="uid://8svgln0qb6kg" path="res://assets/Objects/building_icon/gold.png" id="9_1ig34"]
+[ext_resource type="Texture2D" uid="uid://b3blgjfxtbepm" path="res://assets/Objects/building_icon/gold_gray.png" id="10_yvpgb"]
+[ext_resource type="Texture2D" uid="uid://blfj4j80p0xtl" path="res://assets/Objects/building_icon/millitary.png" id="11_k5jse"]
+[ext_resource type="Texture2D" uid="uid://bxuwa3d3lokyl" path="res://assets/Objects/building_icon/millitary_gray.png" id="12_hmfsq"]
 
-[sub_resource type="Theme" id="Theme_3b0me"]
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_44qtc"]
+load_path = "res://.godot/imported/farm.png-1bc9b293e8adf5ed80398d68933e2391.ctex"
 
 [node name="Buildings" type="Control"]
 layout_mode = 3
@@ -36,14 +47,38 @@ theme_override_constants/separation = 100
 [node name="FarmContanier" parent="Production/Production" instance=ExtResource("3_2tr5g")]
 layout_mode = 2
 
+[node name="BuildingName" parent="Production/Production/FarmContanier" index="0"]
+texture_normal = SubResource("CompressedTexture2D_44qtc")
+
+[node name="Shadow" parent="Production/Production/FarmContanier/BuildingName" index="0"]
+texture_normal = ExtResource("5_0m3s3")
+
 [node name="WoodContanier" parent="Production/Production" instance=ExtResource("3_2tr5g")]
 layout_mode = 2
+
+[node name="BuildingName" parent="Production/Production/WoodContanier" index="0"]
+texture_normal = ExtResource("5_8jene")
+
+[node name="Shadow" parent="Production/Production/WoodContanier/BuildingName" index="0"]
+texture_normal = ExtResource("6_uqoh7")
 
 [node name="StoneContanier" parent="Production/Production" instance=ExtResource("3_2tr5g")]
 layout_mode = 2
 
+[node name="BuildingName" parent="Production/Production/StoneContanier" index="0"]
+texture_normal = ExtResource("7_av8fo")
+
+[node name="Shadow" parent="Production/Production/StoneContanier/BuildingName" index="0"]
+texture_normal = ExtResource("8_fw6gp")
+
 [node name="GoldContanier" parent="Production/Production" instance=ExtResource("3_2tr5g")]
 layout_mode = 2
+
+[node name="BuildingName" parent="Production/Production/GoldContanier" index="0"]
+texture_normal = ExtResource("9_1ig34")
+
+[node name="Shadow" parent="Production/Production/GoldContanier/BuildingName" index="0"]
+texture_normal = ExtResource("10_yvpgb")
 
 [node name="MillitaryContainer" type="MarginContainer" parent="."]
 layout_mode = 2
@@ -60,6 +95,12 @@ theme_override_constants/separation = 100
 
 [node name="Millitary" parent="MillitaryContainer/Millitary" instance=ExtResource("3_2tr5g")]
 layout_mode = 2
+
+[node name="BuildingName" parent="MillitaryContainer/Millitary/Millitary" index="0"]
+texture_normal = ExtResource("11_k5jse")
+
+[node name="Shadow" parent="MillitaryContainer/Millitary/Millitary/BuildingName" index="0"]
+texture_normal = ExtResource("12_hmfsq")
 
 [node name="Label" parent="MillitaryContainer/Millitary/Millitary/HBoxContainer" index="0"]
 text = "兵营"
@@ -117,26 +158,24 @@ size_flags_horizontal = 3
 theme_override_font_sizes/normal_font_size = 30
 text = "0/1000"
 
-[node name="ConfirmationDialog" type="ConfirmationDialog" parent="."]
-title = "升级"
-initial_position = 2
-size = Vector2i(800, 500)
-theme = SubResource("Theme_3b0me")
-ok_button_text = "确认升级"
-cancel_button_text = "取消"
-
 [node name="UpgradeWindow" parent="." instance=ExtResource("5_fyfbf")]
 visible = false
 layout_mode = 1
 
 [node name="AcceptDialog" type="AcceptDialog" parent="."]
-initial_position = 2
+title = "升级失败！"
+position = Vector2i(550, 360)
+size = Vector2i(800, 500)
+content_scale_mode = 1
+theme = ExtResource("6_tgmy7")
 
 [connection signal="pressed" from="Production/Production/FarmContanier/BuildingName" to="." method="_on_farm_pressed"]
 [connection signal="pressed" from="Production/Production/WoodContanier/BuildingName" to="." method="_on_wood_pressed"]
 [connection signal="pressed" from="Production/Production/StoneContanier/BuildingName" to="." method="_on_stone_pressed"]
 [connection signal="pressed" from="Production/Production/GoldContanier/BuildingName" to="." method="_on_gold_pressed"]
+[connection signal="pressed" from="MillitaryContainer/Millitary/Millitary/BuildingName" to="." method="_on_barracks_pressed"]
 [connection signal="pressed" from="BackToMain" to="." method="_on_back_to_main_pressed"]
+[connection signal="pressed" from="RecruitButton" to="." method="_on_recruit_button_pressed"]
 
 [editable path="Production/Production/FarmContanier"]
 [editable path="Production/Production/WoodContanier"]

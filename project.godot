@@ -17,8 +17,10 @@ config/icon="res://icon.svg"
 
 [autoload]
 
-GameManager="*res://Managers/GameManagers.gd"
-ui="*res://UI/ui.gd"
+ui="res://UI/ui.gd"
+EventBus="*res://Core/Events/event_bus.gd"
+resource_manager="*res://Game/Resources/resource_manager.gd"
+production_building_manager="*res://Game/Buildings/production_building_manager.gd"
 
 [display]
 
