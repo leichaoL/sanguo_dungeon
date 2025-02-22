@@ -8,11 +8,11 @@ func _init() -> void:
 
 	# 初始化资源
 	resources = {
-		ResourceModel.ResourceType.FOOD: ResourceModel.new(ResourceModel.ResourceType.FOOD, 1000),
-		ResourceModel.ResourceType.WOOD: ResourceModel.new(ResourceModel.ResourceType.WOOD, 1000),
-		ResourceModel.ResourceType.STONE: ResourceModel.new(ResourceModel.ResourceType.STONE, 1000),
+		ResourceModel.ResourceType.FOOD: ResourceModel.new(ResourceModel.ResourceType.FOOD, 100),
+		ResourceModel.ResourceType.WOOD: ResourceModel.new(ResourceModel.ResourceType.WOOD, 100),
+		ResourceModel.ResourceType.STONE: ResourceModel.new(ResourceModel.ResourceType.STONE, 100),
 		ResourceModel.ResourceType.GOLD: ResourceModel.new(ResourceModel.ResourceType.GOLD, 0, 0, 7),
-		ResourceModel.ResourceType.SOLDIER: ResourceModel.new(ResourceModel.ResourceType.GOLD, 0, 0, 0)
+		ResourceModel.ResourceType.SOLDIER: ResourceModel.new(ResourceModel.ResourceType.SOLDIER, 0, 0, 0)
 	}
 	
 

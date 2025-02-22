@@ -44,7 +44,7 @@ func add_resource(type: ResourceModel.ResourceType, amount: int) -> void:
 	var res = get_resource(type)
 	
 	var new_amount = res.amount + amount
-	print("招募数量%d，新数量%d，限额%d" %[amount, new_amount, res.storage_capacity])
+
 	if new_amount >= res.storage_capacity:
 	
 		EventBus.resource_limit_reached.emit(type)
@@ -52,7 +52,6 @@ func add_resource(type: ResourceModel.ResourceType, amount: int) -> void:
 	res.amount = new_amount
 	update_resource(res)
 	EventBus.resource_changed.emit(type, res.amount, res.storage_capacity)
-	print(new_amount)
 	
 # 消耗资源
 func remove_resource(type: ResourceModel.ResourceType, amount: int) -> void:
@@ -106,7 +105,7 @@ func _on_production_timer_timeout() -> void:
 
 func _on_production_building_upgrade_success(building_type: ProductionBuildingModel.ProductionBuildingType) -> void:
 	# 生产建筑升级成功后，更新生产速率和存储容量
-	var production_building = production_building_manager.get_production_building(building_type)
+	
 	
 	var production_rate = production_building_manager.get_production_building_production_rate(building_type)
 	var storage_capacity = production_building_manager.get_production_building_storage_capacity(building_type)
@@ -122,5 +121,8 @@ func _on_recruit_solider():
 	
 	var type = ResourceModel.ResourceType.SOLDIER
 	var cap = get_resource_capacity(type)
-	add_resource(type, 500)
-	
+	if get_resource_amount(type) + 500 <= cap:
+		add_resource(type, 500)
+		remove_resource(ResourceModel.ResourceType.FOOD, 100)
+	else:
+		EventBus.recruit_failed.emit()

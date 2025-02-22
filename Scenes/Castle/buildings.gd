@@ -16,8 +16,8 @@ func _ready() -> void:
 	refresh_all_building()
 	EventBus.production_building_upgrade_success.connect(refresh_building)
 	EventBus.production_building_upgrade_failed.connect(fail_dialog)
-
-
+	EventBus.resource_changed.connect(_on_recruit_solider)
+	EventBus.recruit_failed.connect(_on_recruit_failed)
 
 func _on_back_to_main_pressed() -> void:
 	self.get_tree().change_scene_to_file("res://Scenes/Maps/main_map.tscn")
@@ -108,3 +108,15 @@ func fail_dialog(type: ProductionBuildingModel.ProductionBuildingType, fail_reas
 
 func _on_recruit_button_pressed() -> void:
 	EventBus.recruit_solider.emit()
+
+
+func _on_recruit_solider(type: ResourceModel.ResourceType, amount: int, capacity: int):
+	if type == ResourceModel.ResourceType.SOLDIER:
+		soldier_num.text = "%d/%d" %[amount, capacity]
+
+
+func _on_recruit_failed():
+	
+	accept_dialog.title = '募集失败'
+	accept_dialog.dialog_text = '兵营已满'
+	accept_dialog.visible = true

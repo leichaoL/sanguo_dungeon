@@ -13,7 +13,7 @@ enum ProductionBuildingType {
 @export var type: ProductionBuildingType
 @export var name: String = "未知建筑"
 @export var level: int = 1
-@export var base_production_rate: int = 1
+@export var base_production_rate: int = 0
 @export var base_storage_capacity: int = 1000
 @export var base_upgrade_cost: Dictionary = {}
 @export var upgrade_conditions: Dictionary = {}

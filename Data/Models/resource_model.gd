@@ -34,3 +34,4 @@ func _init(res_type: ResourceType, res_amount: int = 0, res_storage_capacity: in
 			res_name = "黄金"
 		_:
 			res_name = "预备兵"
+	self.name = res_name

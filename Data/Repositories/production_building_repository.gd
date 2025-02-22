@@ -34,7 +34,7 @@ func _init() -> void:
 	production_buildings[ProductionBuildingModel.ProductionBuildingType.LOGGING_CAMP].base_upgrade_cost = {ResourceModel.ResourceType.WOOD: 30, ResourceModel.ResourceType.STONE: 15}
 	production_buildings[ProductionBuildingModel.ProductionBuildingType.QUARRY].base_upgrade_cost = {ResourceModel.ResourceType.WOOD: 40, ResourceModel.ResourceType.STONE: 20}
 	production_buildings[ProductionBuildingModel.ProductionBuildingType.MINING_SITE].base_upgrade_cost = {ResourceModel.ResourceType.WOOD: 50, ResourceModel.ResourceType.STONE: 30}
-	production_buildings[ProductionBuildingModel.ProductionBuildingType.BARRACKS].base_upgrade_cost = {ResourceModel.ResourceType.WOOD: 50, ResourceModel.ResourceType.STONE: 30}
+	production_buildings[ProductionBuildingModel.ProductionBuildingType.BARRACKS].base_upgrade_cost = {ResourceModel.ResourceType.WOOD: 50, ResourceModel.ResourceType.GOLD: 30}
 	
 	# 初始化生产建筑升级条件
 	production_buildings[ProductionBuildingModel.ProductionBuildingType.MINING_SITE].upgrade_conditions = {ProductionBuildingModel.ProductionBuildingType.QUARRY: 2}
