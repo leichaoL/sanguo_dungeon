@@ -35,6 +35,10 @@ func show_upgrade_needs(type: ProductionBuildingModel.ProductionBuildingType) ->
 	building.text = building_name
 	next_level_label.text = str(next_level)
 	
+	label.text = '当前产出：'
+	cur_production.visible = true
+	upgrade_production.visible = true
+	
 	if type != ProductionBuildingModel.ProductionBuildingType.BARRACKS:
 		cur_production_label.text = "%s/s" %cur_speed
 		upgrade_production_label.text = "%s/s → %s/s" % [cur_speed, next_speed]

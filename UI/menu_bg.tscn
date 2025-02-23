@@ -1,0 +1,21 @@
+[gd_scene load_steps=3 format=3 uid="uid://cakarr4bd0pcl"]
+
+[ext_resource type="Texture2D" uid="uid://dxxciv71oogl6" path="res://UI/GUI.png" id="1_dhw8j"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_j5o62"]
+atlas = ExtResource("1_dhw8j")
+region = Rect2(2, 34, 44, 44)
+
+[node name="MenuBG" type="NinePatchRect"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = SubResource("AtlasTexture_j5o62")
+patch_margin_left = 14
+patch_margin_top = 14
+patch_margin_right = 14
+patch_margin_bottom = 14
+axis_stretch_horizontal = 2
+axis_stretch_vertical = 2
